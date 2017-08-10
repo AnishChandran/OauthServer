@@ -40,7 +40,7 @@ def handle_decision():
         data = r.json()
         response.set_cookie('sheet', data['access_token'], max_age=data['expires_in'])
         response.set_cookie('clean_sheet', data['refresh_token'])
-        redirect('https://vickycomp.zendesk.com/agent/tickets/{}'.format(request.query.state))
+        redirect('https://vickycomp.zendesk.com/agent/tickets/{}'.format(request.query.state)+'?zat=true')
 
 
 @route('/auth/user_token')
