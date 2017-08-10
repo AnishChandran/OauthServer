@@ -9,7 +9,7 @@ from bottle import route, redirect, request, response, template, run
 def asana_auth():
     params = {
         'response_type': 'code',
-        'redirect_uri': 'https://my-example-app.herokuapp.com/auth/handle_decision',
+        'redirect_uri': 'https://test-oauth3.herokuapp.com/auth/handle_decision',
         'client_id': '1000.GGXNNVQJA8OC0759779T38C4AT3OGD',
         'scope' : 'ZohoSupport.tickets.READ',
         'state': request.query.state
@@ -28,7 +28,7 @@ def handle_decision():
         'code': request.query.code,
         'client_id': '1000.GGXNNVQJA8OC0759779T38C4AT3OGD',
         'client_secret': 'd2966b8ed2e65ba05c3ce76220a63ef1cc74d21d61',
-        'redirect_uri': 'https://my-example-app.herokuapp.com/auth/handle_decision'
+        'redirect_uri': 'https://test-oauth3.herokuapp.com/auth/handle_decision'
     }
     url = 'https://accounts.zoho.com/oauth/v2/token'
     r = requests.post(url, data=params)
@@ -54,7 +54,7 @@ def get_cookies():
             'refresh_token': refresh_token,
             'client_id': '1000.GGXNNVQJA8OC0759779T38C4AT3OGD',
             'client_secret': 'd2966b8ed2e65ba05c3ce76220a63ef1cc74d21d61',
-            'redirect_uri': 'https://my-example-app.herokuapp.com/auth/handle_decision'
+            'redirect_uri': 'https://test-oauth3.herokuapp.com/auth/handle_decision'
         }
         url = 'https://accounts.zoho.com/oauth/v2/token'
         r = requests.post(url, data=params)
