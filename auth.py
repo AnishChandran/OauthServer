@@ -38,7 +38,6 @@ def handle_decision():
     else:
         data = r.json()
         response.set_cookie('sheet', data['access_token'], max_age=data['expires_in'])
-        response.set_cookie('clean_sheet', data['refresh_token'])
         redirect('https://vickycomp.zendesk.com/agent/tickets/{}'.format(request.query.state))
 
 
