@@ -12,6 +12,7 @@ def asana_auth():
         'redirect_uri': 'https://test-oauth3.herokuapp.com/auth/handle_decision',
         'client_id': '1000.GGXNNVQJA8OC0759779T38C4AT3OGD',
         'scope' : 'ZohoSupport.tickets.READ',
+        'access_type': 'offline',
         'state': request.query.state
     }
     url = 'https://accounts.zoho.com/oauth/v2/auth?' + urlencode(params)
@@ -38,6 +39,7 @@ def handle_decision():
     else:
         data = r.json()
         response.set_cookie('sheet', data['access_token'], max_age=data['expires_in'])
+        response.set_cookie('clean_sheet', data['refresh_token'])
         redirect('https://vickycomp.zendesk.com/agent/tickets/{}'.format(request.query.state))
 
 
